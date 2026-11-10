@@ -22,6 +22,7 @@ body {
     align-items: center;
     padding: 1rem 1.5rem;
     background-color: rgb(49, 187, 153);
+    flex-wrap: wrap;
 }
 
 .logo {
