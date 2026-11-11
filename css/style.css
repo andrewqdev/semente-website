@@ -104,3 +104,38 @@ body {
     font-size: 1.1rem;
     color: #000;
 }
+
+#mapa img {
+    width: 1700px;
+    margin: auto;
+}
+
+@media (max-width: 1920px) {
+    #mapa img {
+        width: 1440px;
+    }
+}
+
+@media (max-width: 1440px) {
+    #mapa img {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #mapa img {
+        width: 700px;
+    }
+}
+
+@media (max-width: 700px) {
+    #mapa img {
+        width: 500px;
+    }
+}
+
+@media (max-width: 500px) {
+    #mapa img {
+        width: 480px;
+    }
+}
