@@ -10,9 +10,81 @@
     --angulo-borda: 360deg;
   }
 }
+/* Atualiza o cabeçalho para alinhar logo à esquerda e barra de XP à direita */
 .cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding-top: 24px;
-  padding-bottom: 24px; /* Controla o espaçamento exato entre a logo e o h1 */
+  padding-bottom: 24px;
+}
+
+/* Pílula da barra de XP */
+.xp-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 118px;
+  padding: 7px 13px;
+  border: 1px solid rgba(56, 232, 215, 0.28);
+  border-radius: 999px;
+  background-color: #0C2B26;
+  box-shadow: 0 0 14px rgba(0, 245, 212, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.xp-topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #E6F4F1;
+  font-variant-numeric: tabular-nums;
+}
+
+.xp-icone {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+/* Fundo da barrinha */
+.xp-trilha {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background-color: #061815;
+  overflow: hidden;
+}
+
+/* Preenchimento animado da barrinha */
+.xp-preenchimento {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00F5D4 0%, #D3EC73 100%);
+  box-shadow: 0 0 8px rgba(211, 236, 115, 0.6);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Destaque animado quando o usuário acerta e ganha XP */
+@keyframes pulsoXp {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+.xp-hud.ganhou {
+  border-color: #D3EC73;
+  box-shadow: 0 0 18px rgba(211, 236, 115, 0.35);
+  animation: pulsoXp 0.45s ease;
+}
+
+.xp-hud.ganhou .xp-texto {
+  color: #D3EC73;
 }
 
 .logo-semente {
@@ -136,4 +208,315 @@
 /* Garante que a pílula continue sempre por cima da borda animada */
 .badge-desafio {
   z-index: 2;
+}
+/* =========================================================
+   SEÇÃO 2: CARD DO MAPA INTERATIVO
+   ========================================================= */
+.card-mapa {
+  margin-top: 24px;
+  padding: 18px 16px 20px;
+  border: 1.5px solid #24D88A;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 25%, #0E3C34 0%, #08211D 75%);
+  box-shadow: 0 0 26px rgba(36, 216, 138, 0.16);
+  text-align: center;
+}
+
+.mapa-preview {
+  width: 100%;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.img-mapa-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.titulo-card {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.descricao-card {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #B8D4CE;
+  margin-bottom: 18px;
+}
+
+.btn-explorar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background-color: #24DF7B;
+  color: #051A16;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(36, 223, 123, 0.28);
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn-explorar:active {
+  transform: scale(0.98);
+  background-color: #1EC96D;
+}
+
+/* =========================================================
+   SEÇÃO 3: SIMULADOR DE CHUVAS
+   ========================================================= */
+.card-simulador {
+  margin-top: 24px;
+  padding: 20px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background-color: #0B2622;
+  text-align: center;
+}
+
+.abas-simulador {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 14px;
+  padding: 4px;
+  border-radius: 999px;
+  background-color: #143631;
+}
+
+.aba-regiao {
+  padding: 8px 6px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #B8D4CE;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.aba-regiao.ativa {
+  background-color: #FFFFFF;
+  color: #071E1A;
+  font-weight: 700;
+}
+
+.leitura-chuva {
+  margin: 18px 0 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+}
+
+.barra-progresso-fundo {
+  width: 100%;
+  height: 12px;
+  padding: 2px;
+  border: 1px solid rgba(56, 232, 215, 0.45);
+  border-radius: 999px;
+  background-color: #071E1A;
+  overflow: hidden;
+}
+
+.barra-progresso-preenchimento {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #24DF7B 0%, #38E8D7 100%);
+  box-shadow: 0 0 10px rgba(56, 232, 215, 0.5);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.badge-bioma {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 5px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background-color: #12332E;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.72rem;
+  color: #D9ECE8;
+}
+
+/* =========================================================
+   SEÇÃO 4: EXPLORE A BACIA (LINKS SUCINTOS)
+   ========================================================= */
+.secao-explore {
+  margin-top: 32px;
+  margin-bottom: 36px;
+}
+
+.titulo-secao {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.lista-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background-color: #0B2622;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+}
+
+.card-link:hover,
+.card-link:active {
+  border-color: #24D88A;
+  background-color: #0F312C;
+  transform: translateY(-1px);
+}
+
+.info-link h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.info-link p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #B8D4CE;
+}
+
+.seta-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #24D88A;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   RODAPÉ DE AUTORIA
+   ========================================================= */
+.rodape {
+  position: relative;
+  width: 100%;
+  padding: 28px 0 32px;
+  background: linear-gradient(180deg, #0D332C 0%, #071E1A 100%);
+  border-top: 2px solid #24D88A;
+  box-shadow: 0 -4px 20px rgba(36, 216, 138, 0.18);
+  text-align: center;
+}
+
+.rodape-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #B8D4CE;
+  margin-bottom: 18px;
+}
+
+.autores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.autor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.autor-nome {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #FFFFFF;
+}
+
+.autor-redes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+}
+
+.link-rede {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #E6F4F1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.link-rede:hover {
+  border-color: #38E8D7;
+  color: #38E8D7;
+}
+
+.rodape-institucional {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: #8FB3AC;
+}
+
+/* Estados extras para o feedback do Desafio Rápido (JS) */
+.card-desafio.respondido {
+  animation: none;
+  background:
+    linear-gradient(#09231F, #09231F) padding-box,
+    linear-gradient(90deg, #00F5D4, #24DF7B) border-box;
+}
+
+.btn-opcao.correto {
+  background-color: #164E3B;
+  border-color: #24DF7B;
+  color: #FFFFFF;
+}
+
+.btn-opcao.errado {
+  background-color: #4A1D24;
+  border-color: #F87171;
+  color: #FECACA;
 }
