@@ -1,3 +1,5 @@
+'use strict';
+
 document.getElementById('card-mapa').addEventListener('click', function() {
     window.location.href = 'src/pages/mapa.html';
 });
