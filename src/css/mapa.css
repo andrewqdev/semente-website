@@ -1,0 +1,389 @@
+/* =========================================================
+   CABEÇALHO DA PÁGINA DO MAPA
+   ========================================================= */
+.cabecalho-mapa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 18px;
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background-color: #0C2B26;
+  color: #E6F4F1;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-voltar:active {
+  transform: scale(0.96);
+  border-color: #38E8D7;
+}
+
+.logo-mapa {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.badge-exploradas {
+  padding: 6px 12px;
+  border: 1px solid rgba(36, 216, 138, 0.35);
+  border-radius: 999px;
+  background-color: #0D332C;
+  color: #24DF7B;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   TÍTULO E INSTRUÇÃO
+   ========================================================= */
+.intro-mapa {
+  margin-bottom: 18px;
+}
+
+.titulo-pagina {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.subtitulo-pagina {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #B8D4CE;
+}
+
+/* =========================================================
+   PALCO CENTRAL DO MAPA E PINOS INTERATIVOS
+   ========================================================= */
+.card-mapa-interativo {
+  padding: 12px;
+  border: 1.5px solid #24D88A;
+  border-radius: 20px;
+  background-color: #09231F;
+  box-shadow: 0 0 26px rgba(36, 216, 138, 0.16);
+}
+
+.mapa-palco {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #061815;
+}
+
+.img-mapa-central {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+/* Botão-pino clicável posicionado sobre o mapa */
+.pino-regiao {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+}
+
+.pino-centro {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #00F5D4;
+  border: 2.5px solid #071E1A;
+  box-shadow: 0 0 10px #00F5D4;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pino-pulso {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #00F5D4;
+  opacity: 0.6;
+  animation: pulsarPino 2.2s infinite ease-out;
+}
+
+/* Estado ativo do pino selecionado */
+.pino-regiao.ativo {
+  z-index: 4;
+}
+
+.pino-regiao.ativo .pino-centro {
+  width: 18px;
+  height: 18px;
+  background-color: #D3EC73;
+  box-shadow: 0 0 16px #D3EC73;
+}
+
+.pino-regiao.ativo .pino-pulso {
+  width: 38px;
+  height: 38px;
+  border-color: #D3EC73;
+}
+
+@keyframes pulsarPino {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+/* Atalhos de texto abaixo da imagem do mapa */
+.seletor-cidades {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.pill-cidade {
+  padding: 8px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background-color: #10322D;
+  color: #B8D4CE;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.66rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.pill-cidade.ativa {
+  background-color: #24DF7B;
+  border-color: #24DF7B;
+  color: #051A16;
+  font-weight: 700;
+}
+
+/* =========================================================
+   PAINEL DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS
+   ========================================================= */
+.painel-regiao {
+  margin-top: 18px;
+  margin-bottom: 36px;
+  padding: 20px 16px;
+  border: 1px solid rgba(56, 232, 215, 0.25);
+  border-radius: 20px;
+  background-color: #0B2622;
+}
+
+.painel-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tag-trecho {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #8FB3AC;
+  margin-bottom: 2px;
+}
+
+.nome-regiao {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: #FFFFFF;
+}
+
+.badge-regime {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.badge-regime.perene {
+  background-color: rgba(0, 245, 212, 0.14);
+  border: 1px solid #00F5D4;
+  color: #00F5D4;
+}
+
+.badge-regime.intermitente {
+  background-color: rgba(211, 236, 115, 0.14);
+  border: 1px solid #D3EC73;
+  color: #D3EC73;
+}
+
+/* Volume anual em destaque */
+.bloco-pluviometria {
+  padding: 14px;
+  border-radius: 14px;
+  background-color: #071E1A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+}
+
+.numero-principal {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 2.1rem;
+  color: #FFFFFF;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.numero-principal small {
+  font-size: 1rem;
+  color: #38E8D7;
+  font-weight: 500;
+}
+
+.pill-comparativo {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #D3EC73;
+}
+
+/* Gráfico mensal de 12 barras */
+.bloco-grafico {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background-color: #08201C;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grafico-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #B8D4CE;
+}
+
+.grafico-cabecalho strong {
+  color: #24DF7B;
+}
+
+.grafico-barras {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: end;
+  gap: 5px;
+  height: 68px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.barra-mes {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background-color: #1A4D45;
+  transition: height 0.35s ease, background-color 0.35s ease;
+}
+
+.barra-mes.pico {
+  background: linear-gradient(180deg, #D3EC73 0%, #24DF7B 100%);
+  box-shadow: 0 0 8px rgba(36, 223, 123, 0.35);
+}
+
+.grafico-meses {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px;
+  margin-top: 6px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #8FB3AC;
+}
+
+/* Grade 2x2 de dados correlacionados */
+.grid-correlacionados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mini-card-dado {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #0E302B;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dado-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #8FB3AC;
+  text-transform: uppercase;
+}
+
+.dado-valor {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: #FFFFFF;
+}
+
+.texto-sintese {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #CBE0DC;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fonte-dados {
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.64rem;
+  color: #769992;
+  text-align: right;
+}
