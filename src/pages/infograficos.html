@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infográficos • Bacia do Rio Potengi</title>
+  <link rel="icon" type="image/png" href="../../assets/imgs/favicon.png">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/infograficos.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO ENXUTO -->
+  <header class="container cabecalho-info">
+    <a href="../../index.html" class="btn-voltar" aria-label="Voltar para a página inicial">
+      <span aria-hidden="true">←</span> Início
+    </a>
+
+    <img 
+      src="../../assets/imgs/logo_semente.png" 
+      alt="Logo SEMENTE IFRN" 
+      class="logo-info"
+    >
+
+    <a href="./dados.html" class="btn-atalho-dados">
+      Dados <span aria-hidden="true">→</span>
+    </a>
+  </header>
+
+  <main class="container">
+    <!-- TÍTULO E INTRODUÇÃO -->
+    <section class="intro-info">
+      <span class="tag-secao">SÍNTESE VISUAL • CICLO & IMPACTOS</span>
+      <h1 class="titulo-pagina">Infográficos da Bacia</h1>
+      <p class="subtitulo-pagina">
+        Explore visualmente como a chuva nasce no oceano, percorre 176 km até o sertão e transforma cada paisagem
+      </p>
+    </section>
+
+    <!-- =========================================================
+         INFOGRÁFICO 1: CICLO HIDROLÓGICO INTERATIVO (SVG)
+         ========================================================= -->
+    <section class="card-infografico card-borda-giratoria" aria-labelledby="titulo-ciclo">
+      <span class="badge-flutuante">
+        INFOGRÁFICO 01 <span class="separador">•</span> <strong class="destaque">CICLO DA ÁGUA</strong>
+      </span>
+
+      <h2 id="titulo-ciclo" class="titulo-bloco">Da Umidade do Mar até a Nascente</h2>
+      <p class="subtitulo-bloco">Toque nas etapas abaixo para acompanhar o caminho da chuva</p>
+
+      <!-- Ilustração Vetorial (SVG) do relevo da Bacia do Potengi -->
+      <div class="palco-svg">
+        <svg viewBox="0 0 360 165" class="svg-ciclo" role="img" aria-label="Perfil esquemático da Bacia do Rio Potengi da serra ao mar">
+          <defs>
+            <linearGradient id="gradMar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00BBF9" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#06283D" stop-opacity="0.95"/>
+            </linearGradient>
+            <linearGradient id="gradRelevo" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2D2414"/>
+              <stop offset="50%" stop-color="#13382E"/>
+              <stop offset="100%" stop-color="#0B3B38"/>
+            </linearGradient>
+            <linearGradient id="gradRio" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#FFB703"/>
+              <stop offset="50%" stop-color="#24DF7B"/>
+              <stop offset="100%" stop-color="#00F5D4"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Fundo céu noturno -->
+          <rect width="360" height="165" rx="12" fill="#061815"/>
+
+          <!-- Setas de ventos úmidos (Etapa 1: Evaporação e Ventos) -->
+          <g id="svg-etapa-1" class="grupo-svg ativo">
+            <path d="M 318 112 Q 312 95 322 80" stroke="#00BBF9" stroke-width="2" fill="none" stroke-dasharray="3 3" class="animar-fluxo"/>
+            <path d="M 336 112 Q 330 95 340 80" stroke="#00BBF9" stroke-width="2" fill="none" stroke-dasharray="3 3" class="animar-fluxo"/>
+            <path d="M 305 42 C 255 30, 185 28, 115 36" stroke="#38E8D7" stroke-width="2.2" fill="none" stroke-dasharray="5 4" class="animar-fluxo"/>
+            <polygon points="115,36 123,32 121,40" fill="#38E8D7"/>
+            <text x="215" y="22" fill="#38E8D7" font-family="JetBrains Mono, monospace" font-size="8.5" text-anchor="middle">VENTOS ÚMIDOS DO ATLÂNTICO</text>
+          </g>
+
+          <!-- Nuvens e chuva intensa no litoral (Etapa 2: Precipitação Costeira) -->
+          <g id="svg-etapa-2" class="grupo-svg">
+            <ellipse cx="275" cy="48" rx="28" ry="11" fill="#1E5650" stroke="#00F5D4" stroke-width="1.3"/>
+            <ellipse cx="292" cy="51" rx="20" ry="9" fill="#1E5650" stroke="#00F5D4" stroke-width="1.3"/>
+            <line x1="264" y1="64" x2="260" y2="84" stroke="#00F5D4" stroke-width="1.8" stroke-dasharray="3 3" class="animar-chuva"/>
+            <line x1="278" y1="64" x2="274" y2="88" stroke="#00F5D4" stroke-width="1.8" stroke-dasharray="3 3" class="animar-chuva"/>
+            <line x1="292" y1="64" x2="288" y2="84" stroke="#00F5D4" stroke-width="1.8" stroke-dasharray="3 3" class="animar-chuva"/>
+            <text x="276" y="102" fill="#D3EC73" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="bold" text-anchor="middle">1.450 mm</text>
+          </g>
+
+          <!-- Nuvem menor no semiárido (Etapa 3: Escassez na Serra) -->
+          <g id="svg-etapa-3" class="grupo-svg">
+            <ellipse cx="62" cy="44" rx="19" ry="8" fill="#2A2618" stroke="#FFB703" stroke-width="1.3"/>
+            <line x1="56" y1="56" x2="54" y2="68" stroke="#FFB703" stroke-width="1.5" stroke-dasharray="2 3" class="animar-chuva"/>
+            <line x1="68" y1="56" x2="66" y2="68" stroke="#FFB703" stroke-width="1.5" stroke-dasharray="2 3" class="animar-chuva"/>
+            <text x="62" y="81" fill="#FFB703" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="bold" text-anchor="middle">600 mm</text>
+          </g>
+
+          <!-- Relevo (Serra de Santana -> Agreste -> Tabuleiros -> Mar) -->
+          <path d="M 0 165 L 0 88 Q 48 84 88 106 Q 155 124 220 128 L 295 132 L 295 165 Z" fill="url(#gradRelevo)"/>
+
+          <!-- Oceano Atlântico à direita -->
+          <rect x="295" y="126" width="65" height="39" fill="url(#gradMar)"/>
+
+          <!-- Curso do Rio Potengi + Barragem (Etapa 4: Escoamento e Foz) -->
+          <g id="svg-etapa-4" class="grupo-svg">
+            <path d="M 28 92 Q 95 112 162 122 T 296 130" stroke="url(#gradRio)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <!-- Barragem Campo Grande -->
+            <rect x="148" y="114" width="12" height="11" rx="2" fill="#D3EC73" stroke="#071E1A" stroke-width="1.5"/>
+            <text x="154" y="108" fill="#D3EC73" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">BARRAGEM</text>
+          </g>
+
+          <!-- Rótulos geográficos fixos -->
+          <text x="34" y="152" fill="#B8D4CE" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">CERRO CORÁ</text>
+          <text x="154" y="152" fill="#B8D4CE" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">S.P. POTENGI</text>
+          <text x="255" y="152" fill="#B8D4CE" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">NATAL</text>
+          <text x="328" y="152" fill="#00F5D4" font-family="JetBrains Mono, monospace" font-size="7.5" font-weight="bold" text-anchor="middle">ATLÂNTICO</text>
+        </svg>
+      </div>
+
+      <!-- Botões das 4 etapas do ciclo -->
+      <div class="grade-etapas" role="tablist" aria-label="Etapas do ciclo hidrológico">
+        <button type="button" class="btn-etapa ativa" data-etapa="1">1. Evaporação</button>
+        <button type="button" class="btn-etapa" data-etapa="2">2. Litoral</button>
+        <button type="button" class="btn-etapa" data-etapa="3">3. Sertão</button>
+        <button type="button" class="btn-etapa" data-etapa="4">4. Rio & Foz</button>
+      </div>
+
+      <!-- Explicação dinâmica da etapa selecionada -->
+      <div class="box-etapa-info" aria-live="polite">
+        <div class="etapa-cabecalho">
+          <strong id="etapa-titulo">1. Evaporação Oceânica e Ventos Alísios</strong>
+          <span id="etapa-tag" class="pill-etapa">ORIGEM DA UMIDADE</span>
+        </div>
+        <p id="etapa-descricao">
+          O calor tropical evapora a água do Oceano Atlântico e os ventos alísios empurram massas úmidas diretamente para a costa leste do Rio Grande do Norte.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         INFOGRÁFICO 2: IMPACTO DA CHUVA NO SOLO (INFILTRAÇÃO VS ALAGAMENTO)
+         ========================================================= -->
+    <section class="card-infografico card-borda-giratoria" aria-labelledby="titulo-impacto">
+      <span class="badge-flutuante">
+        INFOGRÁFICO 02 <span class="separador">•</span> <strong class="destaque">USO DO SOLO</strong>
+      </span>
+
+      <h2 id="titulo-impacto" class="titulo-bloco">Para Onde Vai a Água da Chuva?</h2>
+      <p class="subtitulo-bloco">Simule uma tempestade de 80 mm em diferentes coberturas da bacia</p>
+
+      <!-- Seletor de cobertura do solo -->
+      <div class="abas-solo" role="tablist" aria-label="Tipo de cobertura do solo">
+        <button type="button" class="aba-solo ativa" data-solo="natural">Mata & Mangue</button>
+        <button type="button" class="aba-solo" data-solo="agricola">Agreste / Pasto</button>
+        <button type="button" class="aba-solo" data-solo="urbano">Asfalto Urbano</button>
+      </div>
+
+      <!-- Visualização em barras empilhadas + métricas -->
+      <div class="painel-solo" aria-live="polite">
+        <div class="barra-empilhada" aria-label="Distribuição percentual da água da chuva">
+          <div id="fatia-infiltracao" class="fatia fatia-infiltracao" style="width: 55%;"></div>
+          <div id="fatia-evapo" class="fatia fatia-evapo" style="width: 30%;"></div>
+          <div id="fatia-escoamento" class="fatia fatia-escoamento" style="width: 15%;"></div>
+        </div>
+
+        <div class="legenda-solo">
+          <div class="item-legenda">
+            <span class="bolinha-cor cor-infiltracao"></span>
+            <div>
+              <span class="legenda-nome">Infiltração no Solo</span>
+              <strong id="valor-infiltracao" class="legenda-pct">55% (Recarga)</strong>
+            </div>
+          </div>
+
+          <div class="item-legenda">
+            <span class="bolinha-cor cor-evapo"></span>
+            <div>
+              <span class="legenda-nome">Retenção Vegetal</span>
+              <strong id="valor-evapo" class="legenda-pct">30% (Evapotransp.)</strong>
+            </div>
+          </div>
+
+          <div class="item-legenda">
+            <span class="bolinha-cor cor-escoamento"></span>
+            <div>
+              <span class="legenda-nome">Escoamento Rápido</span>
+              <strong id="valor-escoamento" class="legenda-pct">15% (Controlado)</strong>
+            </div>
+          </div>
+        </div>
+
+        <div id="alerta-solo" class="box-consequencia seguro">
+          <strong id="solo-status-titulo">Equilíbrio Hidrológico Preservado</strong>
+          <p id="solo-status-texto">
+            As raízes do manguezal e da mata ciliar funcionam como esponjas naturais, filtrando sedimentos e abastecendo os aquíferos subterrâneos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         INFOGRÁFICO 3: PERFIL LONGITUDINAL DO RIO POTENGI (176 KM)
+         ========================================================= -->
+    <section class="card-perfil">
+      <div class="perfil-topo">
+        <div>
+          <h2 class="titulo-bloco">Perfil da Nascente à Foz</h2>
+          <p class="subtitulo-bloco">Queda de 680 m de altitude ao longo de ~176 km</p>
+        </div>
+        <span class="badge-extensao">176 KM</span>
+      </div>
+
+      <div class="timeline-rio">
+        <!-- Ponto 1 -->
+        <article class="marco-rio">
+          <div class="marcador-coluna">
+            <span class="ponto-altitude">680m</span>
+            <span class="linha-vertical"></span>
+          </div>
+          <div class="conteudo-marco">
+            <span class="marco-km">KM 0 • CERRO CORÁ</span>
+            <h3>Serra de Santana (Nascente)</h3>
+            <p>Terreno cristalino e semiárido (600 mm/ano). O rio nasce intermitente, correndo apenas após as chuvas de verão/outono.</p>
+          </div>
+        </article>
+
+        <!-- Ponto 2 -->
+        <article class="marco-rio">
+          <div class="marcador-coluna">
+            <span class="ponto-altitude">180m</span>
+            <span class="linha-vertical"></span>
+          </div>
+          <div class="conteudo-marco">
+            <span class="marco-km">KM 85 • SÃO PAULO DO POTENGI</span>
+            <h3>Barragem Campo Grande</h3>
+            <p>Principal obra hídrica da bacia (760 mm/ano). Retém a água das enxurradas para garantir abastecimento humano e agrícola.</p>
+          </div>
+        </article>
+
+        <!-- Ponto 3 -->
+        <article class="marco-rio">
+          <div class="marcador-coluna">
+            <span class="ponto-altitude">35m</span>
+            <span class="linha-vertical"></span>
+          </div>
+          <div class="conteudo-marco">
+            <span class="marco-km">KM 145 • MACAÍBA</span>
+            <h3>Transição Subúmida</h3>
+            <p>Com 1.180 mm/ano e aporte de afluentes costeiros, o leito ganha volume contínuo e atravessa áreas de várzea e tabuleiros.</p>
+          </div>
+        </article>
+
+        <!-- Ponto 4 -->
+        <article class="marco-rio ultimo">
+          <div class="marcador-coluna">
+            <span class="ponto-altitude mar">0m</span>
+          </div>
+          <div class="conteudo-marco">
+            <span class="marco-km">KM 176 • NATAL</span>
+            <h3>Estuário Potengi–Jundiaí</h3>
+            <p>Sob 1.450 mm/ano de chuva, a água doce encontra as marés do Atlântico, sustentando o manguezal e o porto de Natal.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ENCERRAMENTO DA JORNADA (CHAMADA PARA O DESAFIO DE 100 XP)
+         ========================================================= -->
+    <section class="card-encerramento">
+      <span class="encerramento-tag">JORNADA COMPLETA</span>
+      <h2>Pronto para testar o que aprendeu?</h2>
+      <p>Volte ao Mapa Interativo, clique nas 4 regiões da bacia e conquiste os 100 XP do Projeto Semente.</p>
+
+      <div class="botoes-finais">
+        <a href="./mapa.html" class="btn-primario-final">Ir para o Desafio (100 XP) →</a>
+        <a href="../../index.html" class="btn-secundario-final">Voltar ao Início</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/infograficos.js"></script>
+</body>
+</html>

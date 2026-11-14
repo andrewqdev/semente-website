@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Cabeçalho enxuto com botão de retorno e contador de exploração -->
+  <!-- CABEÇALHO COM VOLTAR, LOGO E BARRA DE 100 XP -->
   <header class="container cabecalho-mapa">
     <a href="../../index.html" class="btn-voltar" aria-label="Voltar para a página inicial">
       <span aria-hidden="true">←</span> Início
@@ -22,17 +22,28 @@
       class="logo-mapa"
     >
 
-    <span id="contador-regioes" class="badge-exploradas">1/4 REGIÕES</span>
+    <div class="xp-hud" id="xp-hud" aria-label="Barra de experiência até 100 XP">
+      <div class="xp-topo">
+        <span class="xp-icone" aria-hidden="true">⚡</span>
+        <span id="xp-texto" class="xp-texto">0 / 100 XP</span>
+      </div>
+      <div class="xp-trilha">
+        <div id="xp-barra" class="xp-preenchimento" style="width: 0%;"></div>
+      </div>
+    </div>
   </header>
 
   <main class="container">
     <section class="intro-mapa">
-      <h1 class="titulo-pagina">Mapa Pluviométrico Interativo</h1>
-      <p class="subtitulo-pagina">Toque nos pinos sobre a bacia para comparar chuvas, biomas e o regime do rio</p>
+      <div class="topo-intro">
+        <h1 class="titulo-pagina">Mapa Pluviométrico Interativo</h1>
+        <span id="contador-regioes" class="badge-exploradas">1/4 REGIÕES</span>
+      </div>
+      <p class="subtitulo-pagina">Toque nos pinos, compare os dados e responda aos desafios para alcançar 100 XP</p>
     </section>
 
-    <!-- MAPA CENTRAL COM PINOS CLICÁVEIS -->
-    <section class="card-mapa-interativo" aria-label="Mapa clicável da Bacia do Rio Potengi">
+    <!-- CARD 1: MAPA CENTRAL COM BORDA GIRATÓRIA 360° -->
+    <section class="card-mapa-interativo card-borda-giratoria" aria-label="Mapa clicável da Bacia do Rio Potengi">
       <div class="mapa-palco">
         <img 
           src="../../assets/imgs/mapa.png" 
@@ -40,7 +51,7 @@
           class="img-mapa-central"
         >
 
-        <!-- Pinos posicionados em % sobre o mapa (do Oeste/Nascente ao Leste/Foz) -->
+        <!-- Pinos posicionados em % sobre o mapa (Oeste -> Leste) -->
         <button 
           type="button" 
           class="pino-regiao" 
@@ -86,7 +97,7 @@
         </button>
       </div>
 
-      <!-- Barra de acesso rápido caso o usuário prefira tocar pelo nome -->
+      <!-- Atalhos por nome da cidade -->
       <div class="seletor-cidades" role="tablist" aria-label="Atalhos das regiões">
         <button type="button" class="pill-cidade" data-regiao="cerro-cora">Cerro Corá</button>
         <button type="button" class="pill-cidade" data-regiao="sp-potengi">S. P. Potengi</button>
@@ -95,17 +106,34 @@
       </div>
     </section>
 
-    <!-- PAINEL DINÂMICO DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS -->
-    <section class="painel-regiao" id="painel-regiao" aria-live="polite">
+    <!-- CARD 2: DESAFIO INTERATIVO DA REGIÃO SELECIONADA (+25 XP) -->
+    <section class="card-quiz-regiao card-borda-giratoria" id="card-quiz" aria-live="polite">
+      <span id="quiz-badge" class="badge-quiz">
+        DESAFIO DE NATAL <span class="separador">•</span> <strong class="xp">+25 XP</strong>
+      </span>
+
+      <h2 id="quiz-pergunta" class="quiz-pergunta">
+        Por que chove 2,4x mais em Natal do que na nascente do rio?
+      </h2>
+
+      <div id="quiz-opcoes" class="quiz-opcoes">
+        <!-- Botões gerados dinamicamente pelo mapa.js -->
+      </div>
+
+      <p id="quiz-feedback" class="quiz-feedback" hidden></p>
+    </section>
+
+    <!-- CARD 3: PAINEL DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS -->
+    <section class="painel-regiao card-borda-giratoria" id="painel-regiao" aria-live="polite">
       <div class="painel-topo">
         <div>
           <span id="regiao-trecho" class="tag-trecho">Baixo Curso • Foz e Estuário</span>
           <h2 id="regiao-nome" class="nome-regiao">Natal</h2>
         </div>
-        <span id="regiao-regime" class="badge-regime perene">RIO PERENE</span>
+        <span id="regiao-regime" class="badge-regime">RIO PERENE</span>
       </div>
 
-      <!-- Destaque pluviométrico -->
+      <!-- Volume anual em destaque -->
       <div class="bloco-pluviometria">
         <div class="numero-principal">
           <span id="regiao-mm">1.450</span>
@@ -121,7 +149,7 @@
           <strong id="regiao-pico">Pico: Mar–Jul</strong>
         </div>
         <div id="grafico-barras" class="grafico-barras">
-          <!-- Barras geradas automaticamente pelo mapa.js -->
+          <!-- Barras geradas pelo mapa.js -->
         </div>
         <div class="grafico-meses">
           <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span>
@@ -129,7 +157,7 @@
         </div>
       </div>
 
-      <!-- Dados correlacionados (Bioma, Hidrologia, Solo e Estação) -->
+      <!-- Dados correlacionados -->
       <div class="grid-correlacionados">
         <article class="mini-card-dado">
           <span class="dado-label">Bioma Dominante</span>
@@ -143,7 +171,7 @@
 
         <article class="mini-card-dado">
           <span class="dado-label">Uso do Solo & Impacto</span>
-          <strong id="regiao-impacto" class="dado-valor">Alta urbanização e drenagem</strong>
+          <strong id="regiao-impacto" class="dado-valor">Alta impermeabilização urbana</strong>
         </article>
 
         <article class="mini-card-dado">
@@ -152,7 +180,6 @@
         </article>
       </div>
 
-      <!-- Síntese explicativa para a apresentação -->
       <p id="regiao-resumo" class="texto-sintese">
         Na foz, a umidade vinda do Oceano Atlântico eleva o volume anual para 1.450 mm, mantendo o rio perene e alimentando o ecossistema de manguezal.
       </p>

@@ -1,10 +1,53 @@
 /* =========================================================
-   CABEÇALHO DA PÁGINA DO MAPA
+   VARIÁVEIS DINÂMICAS E ANIMAÇÃO DE BORDA 360°
+   ========================================================= */
+:root {
+  --cor-tema-1: #00F5D4;
+  --cor-tema-2: #D3EC73;
+  --cor-tema-3: #00BBF9;
+  --cor-tema-glow: rgba(0, 245, 212, 0.24);
+}
+
+@property --angulo-borda {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes girarBorda360 {
+  to {
+    --angulo-borda: 360deg;
+  }
+}
+
+/* Classe reutilizável para girar a borda luminosa em 360° */
+.card-borda-giratoria {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#09231F, #09231F) padding-box,
+    conic-gradient(
+      from var(--angulo-borda),
+      #0E3A34 0deg,
+      var(--cor-tema-1) 65deg,
+      var(--cor-tema-2) 130deg,
+      var(--cor-tema-3) 195deg,
+      #0E3A34 260deg,
+      #0E3A34 360deg
+    ) border-box;
+  box-shadow:
+    0 0 24px var(--cor-tema-glow),
+    inset 0 0 14px rgba(0, 245, 212, 0.05);
+  animation: girarBorda360 3.6s linear infinite;
+}
+
+/* =========================================================
+   CABEÇALHO E BARRA DE 100 XP
    ========================================================= */
 .cabecalho-mapa {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   padding-top: 20px;
   padding-bottom: 18px;
 }
@@ -13,21 +56,21 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px;
+  padding: 7px 13px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background-color: #0C2B26;
   color: #E6F4F1;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   text-decoration: none;
   transition: border-color 0.2s ease, transform 0.1s ease;
 }
 
 .btn-voltar:active {
   transform: scale(0.96);
-  border-color: #38E8D7;
+  border-color: var(--cor-tema-1);
 }
 
 .logo-mapa {
@@ -36,50 +79,119 @@
   display: block;
 }
 
-.badge-exploradas {
-  padding: 6px 12px;
-  border: 1px solid rgba(36, 216, 138, 0.35);
+/* HUD de XP até 100 XP */
+.xp-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 124px;
+  padding: 7px 12px;
+  border: 1.5px solid rgba(0, 245, 212, 0.35);
   border-radius: 999px;
-  background-color: #0D332C;
-  color: #24DF7B;
+  background: linear-gradient(135deg, #0D322C 0%, #09211D 100%);
+  box-shadow: 0 0 16px rgba(0, 245, 212, 0.14);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.xp-topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   font-size: 0.7rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+}
+
+.xp-trilha {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #051613;
+  overflow: hidden;
+}
+
+.xp-preenchimento {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00BBF9 0%, #00F5D4 50%, #D3EC73 100%);
+  box-shadow: 0 0 10px rgba(211, 236, 115, 0.65);
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes pulsoXp {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.xp-hud.ganhou {
+  border-color: #D3EC73;
+  box-shadow: 0 0 22px rgba(211, 236, 115, 0.45);
+  animation: pulsoXp 0.45s ease;
+}
+
+.xp-hud.maximo {
+  border-color: #FFB703;
+  box-shadow: 0 0 24px rgba(255, 183, 3, 0.5);
+}
+
+.xp-hud.maximo .xp-texto {
+  color: #FFD166;
 }
 
 /* =========================================================
-   TÍTULO E INSTRUÇÃO
+   TÍTULO E CONTADOR DE REGIÕES
    ========================================================= */
 .intro-mapa {
   margin-bottom: 18px;
 }
 
+.topo-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
 .titulo-pagina {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 1.15;
   color: #FFFFFF;
-  margin-bottom: 6px;
+}
+
+.badge-exploradas {
+  padding: 5px 10px;
+  border: 1px solid rgba(36, 216, 138, 0.4);
+  border-radius: 999px;
+  background-color: #0D332C;
+  color: #24DF7B;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.66rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .subtitulo-pagina {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.4;
   color: #B8D4CE;
 }
 
 /* =========================================================
-   PALCO CENTRAL DO MAPA E PINOS INTERATIVOS
+   CARD 1: MAPA CENTRAL COM PINOS CLICÁVEIS
    ========================================================= */
 .card-mapa-interativo {
   padding: 12px;
-  border: 1.5px solid #24D88A;
   border-radius: 20px;
-  background-color: #09231F;
-  box-shadow: 0 0 26px rgba(36, 216, 138, 0.16);
 }
 
 .mapa-palco {
@@ -97,12 +209,11 @@
   user-select: none;
 }
 
-/* Botão-pino clicável posicionado sobre o mapa */
 .pino-regiao {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -119,7 +230,7 @@
   border-radius: 50%;
   background-color: #00F5D4;
   border: 2.5px solid #071E1A;
-  box-shadow: 0 0 10px #00F5D4;
+  box-shadow: 0 0 12px #00F5D4;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
@@ -129,11 +240,10 @@
   height: 28px;
   border-radius: 50%;
   border: 1.5px solid #00F5D4;
-  opacity: 0.6;
-  animation: pulsarPino 2.2s infinite ease-out;
+  opacity: 0.65;
+  animation: pulsarPino 2.1s infinite ease-out;
 }
 
-/* Estado ativo do pino selecionado */
 .pino-regiao.ativo {
   z-index: 4;
 }
@@ -141,28 +251,21 @@
 .pino-regiao.ativo .pino-centro {
   width: 18px;
   height: 18px;
-  background-color: #D3EC73;
-  box-shadow: 0 0 16px #D3EC73;
+  background-color: var(--cor-tema-2);
+  box-shadow: 0 0 18px var(--cor-tema-2);
 }
 
 .pino-regiao.ativo .pino-pulso {
-  width: 38px;
-  height: 38px;
-  border-color: #D3EC73;
+  width: 40px;
+  height: 40px;
+  border-color: var(--cor-tema-2);
 }
 
 @keyframes pulsarPino {
-  0% {
-    transform: scale(0.65);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.65);
-    opacity: 0;
-  }
+  0%   { transform: scale(0.65); opacity: 0.9; }
+  100% { transform: scale(1.7); opacity: 0; }
 }
 
-/* Atalhos de texto abaixo da imagem do mapa */
 .seletor-cidades {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -172,7 +275,7 @@
 
 .pill-cidade {
   padding: 8px 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   background-color: #10322D;
   color: #B8D4CE;
@@ -187,22 +290,138 @@
 }
 
 .pill-cidade.ativa {
-  background-color: #24DF7B;
-  border-color: #24DF7B;
+  background: linear-gradient(90deg, var(--cor-tema-1), var(--cor-tema-2));
+  border-color: transparent;
   color: #051A16;
   font-weight: 700;
+  box-shadow: 0 0 12px var(--cor-tema-glow);
 }
 
 /* =========================================================
-   PAINEL DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS
+   CARD 2: QUIZ INTERATIVO POR REGIÃO (+25 XP)
+   ========================================================= */
+.card-quiz-regiao {
+  position: relative;
+  margin-top: 28px;
+  padding: 26px 16px 18px;
+  border-radius: 20px;
+}
+
+.badge-quiz {
+  position: absolute;
+  top: -13px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(#123530, #123530) padding-box,
+    linear-gradient(90deg, var(--cor-tema-1), var(--cor-tema-2)) border-box;
+  box-shadow: 0 0 12px var(--cor-tema-glow);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.badge-quiz .xp {
+  font-weight: 700;
+  color: var(--cor-tema-2);
+}
+
+.quiz-pergunta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.32;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+}
+
+.quiz-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.btn-quiz-opcao {
+  width: 100%;
+  text-align: left;
+  padding: 11px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background-color: #133631;
+  color: #E6F4F1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-quiz-opcao:hover:not(:disabled) {
+  border-color: var(--cor-tema-1);
+  background-color: #19453F;
+}
+
+.btn-quiz-opcao:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-quiz-opcao:disabled {
+  cursor: default;
+}
+
+.btn-quiz-opcao.correta {
+  background: linear-gradient(90deg, rgba(36, 223, 123, 0.24), rgba(0, 245, 212, 0.18));
+  border-color: #24DF7B;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.btn-quiz-opcao.errada {
+  background-color: rgba(244, 63, 94, 0.2);
+  border-color: #FB7185;
+  color: #FECDD3;
+}
+
+.quiz-feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #D9ECE8;
+}
+
+.quiz-feedback.acerto {
+  border-left: 3px solid #24DF7B;
+}
+
+.quiz-feedback.erro {
+  border-left: 3px solid #FB7185;
+}
+
+/* =========================================================
+   CARD 3: PAINEL DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS
    ========================================================= */
 .painel-regiao {
-  margin-top: 18px;
+  margin-top: 22px;
   margin-bottom: 36px;
   padding: 20px 16px;
-  border: 1px solid rgba(56, 232, 215, 0.25);
   border-radius: 20px;
-  background-color: #0B2622;
 }
 
 .painel-topo {
@@ -217,7 +436,7 @@
   display: block;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  color: #8FB3AC;
+  color: var(--cor-tema-1);
   margin-bottom: 2px;
 }
 
@@ -231,6 +450,9 @@
 .badge-regime {
   padding: 5px 10px;
   border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--cor-tema-2);
+  color: var(--cor-tema-2);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
   font-size: 0.66rem;
@@ -238,24 +460,11 @@
   white-space: nowrap;
 }
 
-.badge-regime.perene {
-  background-color: rgba(0, 245, 212, 0.14);
-  border: 1px solid #00F5D4;
-  color: #00F5D4;
-}
-
-.badge-regime.intermitente {
-  background-color: rgba(211, 236, 115, 0.14);
-  border: 1px solid #D3EC73;
-  color: #D3EC73;
-}
-
-/* Volume anual em destaque */
 .bloco-pluviometria {
   padding: 14px;
   border-radius: 14px;
   background-color: #071E1A;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 16px;
 }
 
@@ -270,7 +479,7 @@
 
 .numero-principal small {
   font-size: 1rem;
-  color: #38E8D7;
+  color: var(--cor-tema-1);
   font-weight: 500;
 }
 
@@ -279,10 +488,10 @@
   margin-top: 6px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.8rem;
-  color: #D3EC73;
+  color: var(--cor-tema-2);
 }
 
-/* Gráfico mensal de 12 barras */
+/* Gráfico mensal colorido */
 .bloco-grafico {
   margin-bottom: 16px;
   padding: 12px 14px;
@@ -302,7 +511,7 @@
 }
 
 .grafico-cabecalho strong {
-  color: #24DF7B;
+  color: var(--cor-tema-2);
 }
 
 .grafico-barras {
@@ -319,12 +528,12 @@
   width: 100%;
   border-radius: 4px 4px 0 0;
   background-color: #1A4D45;
-  transition: height 0.35s ease, background-color 0.35s ease;
+  transition: height 0.35s ease, background 0.35s ease;
 }
 
 .barra-mes.pico {
-  background: linear-gradient(180deg, #D3EC73 0%, #24DF7B 100%);
-  box-shadow: 0 0 8px rgba(36, 223, 123, 0.35);
+  background: linear-gradient(180deg, var(--cor-tema-2) 0%, var(--cor-tema-1) 100%);
+  box-shadow: 0 0 10px var(--cor-tema-glow);
 }
 
 .grafico-meses {
@@ -350,7 +559,8 @@
   padding: 12px;
   border-radius: 12px;
   background-color: #0E302B;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-top: 2px solid var(--cor-tema-1);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -358,7 +568,7 @@
 
 .dado-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   color: #8FB3AC;
   text-transform: uppercase;
 }
