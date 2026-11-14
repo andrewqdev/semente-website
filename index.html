@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/home.css">
     <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/png">
     <title>Início</title>
 </head>
 <body>
 
-    <header class="header">
-        <img src="assets/imgs/logo.webp" alt="Logo" class="logo">
-        <nav class="menu"> 
-            <a href="index.html">Início</a>
-            <a href="src/pages/mapa.html">Mapa</a>
-            <a href="src/pages/audio.html">Áudio</a>
-        </nav>
-    </header>
+  <header class="container cabecalho">
+    <img 
+      src="./assets/imgs/logo_semente.png" 
+      alt="Logo SEMENTE IFRN" 
+      class="logo-semente"
+    >
+  </header>
 
-    <main class="container">
-        <section class="texto" id="inicio">
-            <h3>Seja muito bem-vindo!</h3>
-            <p>O Primeiro ano de Informática para Internet do Campus Natal Zona Norte traz para o Projeto Semente uma iniciativa que visa promover a conscientização ambiental e a preservação bacia hidrográfica do Potengi. Através de recursos interativos, como mapas e áudios educativos, buscamos engajar a comunidade local e visitantes na importância da conservação dos recursos hídricos.</p>
-        </section>
+  <main class="container">
+    <section class="hero">
+      <h1 class="titulo-principal">Uma Viagem pela Bacia do Rio Potengi</h1>
+      <p class="subtitulo">Descubra como as chuvas transformam o rio da nascente até o mar</p>
+    </section>
+    <section class="card-desafio">
+    <span class="badge-desafio">
+        DESAFIO RÁPIDO <span class="separador">•</span> <strong class="xp">+10 XP</strong>
+    </span>
 
-        <section class="texto" id="escolha">
-            <h4>Explore os recursos do Projeto Semente:</h4>
-        </section>
+    <h2 class="pergunta-desafio">Onde chove 2,4x mais ao longo do rio?</h2>
 
-
-        <div class="cards-container">
-            <section class="card-clicavel" id="card-mapa">
-                <p>Mapa</p>
-            </section>
-            
-            <section class="card-clicavel" id="card-audio">
-                <p>Áudio</p>
-            </section>
-        </div>
+    <div class="opcoes-desafio">
+        <button type="button" class="btn-opcao">Cerro Corá</button>
+        <button type="button" class="btn-opcao">Natal (Foz)</button>
+    </div>
+    </section>
     </main>
 
     <script src="src/js/script.js"></script>
