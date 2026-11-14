@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dados Pluviométricos • Bacia do Rio Potengi</title>
+  <link rel="icon" type="image/png" href="../../assets/imgs/favicon.png">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dados.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO ENXUTO -->
+  <header class="container cabecalho-dados">
+    <a href="../../index.html" class="btn-voltar" aria-label="Voltar para a página inicial">
+      <span aria-hidden="true">←</span> Início
+    </a>
+
+    <img 
+      src="../../assets/imgs/logo_semente.png" 
+      alt="Logo SEMENTE IFRN" 
+      class="logo-dados"
+    >
+
+    <a href="./mapa.html" class="btn-atalho-mapa">
+      Mapa <span aria-hidden="true">→</span>
+    </a>
+  </header>
+
+  <main class="container">
+    <!-- TÍTULO E INTRODUÇÃO -->
+    <section class="intro-dados">
+      <span class="tag-secao">SÉRIE CLIMATOLÓGICA • EMPARN / IGARN</span>
+      <h1 class="titulo-pagina">Dados Pluviométricos</h1>
+      <p class="subtitulo-pagina">
+        Compare volumes anuais, sazonalidade e o contraste hídrico entre o semiárido e o litoral da bacia
+      </p>
+    </section>
+
+    <!-- BLOCO 1: PANORAMA GERAL (KPIs COM BORDA GIRATÓRIA 360°) -->
+    <section class="card-panorama card-borda-giratoria" aria-label="Indicadores gerais da bacia">
+      <div class="kpi-grid">
+        <div class="kpi-item">
+          <span class="kpi-label">MÉDIA DA BACIA</span>
+          <strong class="kpi-valor">998 <small>mm</small></strong>
+          <span class="kpi-detalhe">4 estações-chave</span>
+        </div>
+
+        <div class="kpi-divisor" aria-hidden="true"></div>
+
+        <div class="kpi-item">
+          <span class="kpi-label">AMPLITUDE</span>
+          <strong class="kpi-valor destaque-lima">2,4x</strong>
+          <span class="kpi-detalhe">Foz vs. Nascente</span>
+        </div>
+
+        <div class="kpi-divisor" aria-hidden="true"></div>
+
+        <div class="kpi-item">
+          <span class="kpi-label">CHUVAS</span>
+          <strong class="kpi-valor destaque-ciano">~80%</strong>
+          <span class="kpi-detalhe">Entre Fev e Jul</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 2: COMPARADOR INTERATIVO LADO A LADO -->
+    <section class="card-comparador card-borda-giratoria" aria-live="polite">
+      <span class="badge-flutuante">
+        COMPARADOR DIRETO <span class="separador">•</span> <strong class="destaque">AO VIVO</strong>
+      </span>
+
+      <h2 class="titulo-bloco">Compare duas regiões da bacia</h2>
+
+      <!-- Seletores de Região A e Região B -->
+      <div class="seletores-duplos">
+        <div class="campo-select">
+          <label for="select-regiao-a">Região A</label>
+          <select id="select-regiao-a" class="select-estilizado">
+            <option value="cerro-cora" selected>Cerro Corá (Nascente)</option>
+            <option value="sp-potengi">S. P. do Potengi</option>
+            <option value="macaiba">Macaíba</option>
+            <option value="natal">Natal (Foz)</option>
+          </select>
+        </div>
+
+        <span class="badge-vs" aria-hidden="true">VS</span>
+
+        <div class="campo-select">
+          <label for="select-regiao-b">Região B</label>
+          <select id="select-regiao-b" class="select-estilizado">
+            <option value="cerro-cora">Cerro Corá (Nascente)</option>
+            <option value="sp-potengi">S. P. do Potengi</option>
+            <option value="macaiba">Macaíba</option>
+            <option value="natal" selected>Natal (Foz)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Barras visuais de comparação -->
+      <div class="resultado-comparacao">
+        <div class="linha-barra">
+          <div class="linha-barra-topo">
+            <span id="comp-nome-a" class="comp-cidade">Cerro Corá</span>
+            <strong id="comp-valor-a" class="comp-numero">600 mm/ano</strong>
+          </div>
+          <div class="trilha-comparacao">
+            <div id="comp-barra-a" class="preenchimento-a" style="width: 41%;"></div>
+          </div>
+        </div>
+
+        <div class="linha-barra">
+          <div class="linha-barra-topo">
+            <span id="comp-nome-b" class="comp-cidade">Natal</span>
+            <strong id="comp-valor-b" class="comp-numero">1.450 mm/ano</strong>
+          </div>
+          <div class="trilha-comparacao">
+            <div id="comp-barra-b" class="preenchimento-b" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cartão de síntese automática da diferença -->
+      <div class="box-diferenca">
+        <div class="diferenca-numeros">
+          <span id="comp-diferenca-mm" class="pill-diff">+850 mm/ano</span>
+          <span id="comp-diferenca-pct" class="pill-diff secundaria">+142% de volume</span>
+        </div>
+        <p id="comp-texto-analise" class="texto-analise">
+          Natal recebe 850 mm a mais por ano do que Cerro Corá devido à umidade oceânica constante no litoral.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOCO 3: SAZONALIDADE (CHUVAS VS. ESTIAGEM) -->
+    <section class="card-sazonalidade">
+      <div class="cabecalho-bloco">
+        <div>
+          <h2 class="titulo-bloco">Acumulado por Período</h2>
+          <p class="subtitulo-bloco">Alterne entre o ano inteiro, quadra chuvosa e estiagem</p>
+        </div>
+      </div>
+
+      <div class="abas-periodo" role="tablist" aria-label="Filtrar acumulado por estação">
+        <button type="button" class="aba-periodo ativa" data-periodo="anual">Ano Todo</button>
+        <button type="button" class="aba-periodo" data-periodo="chuvoso">Chuvoso (Fev–Jul)</button>
+        <button type="button" class="aba-periodo" data-periodo="seco">Estiagem (Ago–Jan)</button>
+      </div>
+
+      <div id="lista-barras-sazonais" class="lista-barras-sazonais">
+        <!-- Preenchido dinamicamente pelo dados.js -->
+      </div>
+    </section>
+
+    <!-- BLOCO 4: TABELA CONSOLIDADA FILTRÁVEL -->
+    <section class="card-tabela">
+      <div class="cabecalho-tabela">
+        <h2 class="titulo-bloco">Tabela Técnica por Trecho</h2>
+
+        <div class="filtros-regime" role="group" aria-label="Filtrar por regime do rio">
+          <button type="button" class="filtro-btn ativo" data-filtro="todos">Todos (4)</button>
+          <button type="button" class="filtro-btn" data-filtro="perene">Perene</button>
+          <button type="button" class="filtro-btn" data-filtro="intermitente">Intermitente</button>
+        </div>
+      </div>
+
+      <div class="tabela-wrapper">
+        <table class="tabela-dados">
+          <thead>
+            <tr>
+              <th>Município</th>
+              <th>Volume</th>
+              <th>Pico</th>
+              <th>Regime</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela-dados">
+            <!-- Linhas geradas dinamicamente pelo dados.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <p class="nota-rodape-tabela">
+        * Médias climatológicas históricas consolidadas (EMPARN / ANA / IGARN).
+      </p>
+    </section>
+
+    <!-- CHAMADA PARA A PRÓXIMA SEÇÃO -->
+    <section class="proximo-passo">
+      <a href="./infograficos.html" class="card-proximo">
+        <div>
+          <span class="proximo-tag">PRÓXIMA PARADA</span>
+          <h3>Explorar Infográficos Visuais</h3>
+          <p>Veja o ciclo da chuva da serra até o manguezal</p>
+        </div>
+        <span class="proximo-seta" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <script src="../js/dados.js"></script>
+</body>
+</html>

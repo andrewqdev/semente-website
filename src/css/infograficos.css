@@ -1,0 +1,587 @@
+/* =========================================================
+   BORDA NEON GIRATÓRIA 360°
+   ========================================================= */
+@property --angulo-borda {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes girarBordaInfo {
+  to {
+    --angulo-borda: 360deg;
+  }
+}
+
+.card-borda-giratoria {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#09231F, #09231F) padding-box,
+    conic-gradient(
+      from var(--angulo-borda),
+      #0D3832 0deg,
+      #00F5D4 70deg,
+      #D3EC73 135deg,
+      #00BBF9 200deg,
+      #0D3832 270deg,
+      #0D3832 360deg
+    ) border-box;
+  box-shadow:
+    0 0 22px rgba(0, 245, 212, 0.16),
+    inset 0 0 14px rgba(0, 245, 212, 0.04);
+  animation: girarBordaInfo 4s linear infinite;
+}
+
+/* =========================================================
+   CABEÇALHO E INTRODUÇÃO
+   ========================================================= */
+.cabecalho-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 18px;
+}
+
+.btn-voltar,
+.btn-atalho-dados {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background-color: #0C2B26;
+  color: #E6F4F1;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.76rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-atalho-dados {
+  border-color: rgba(56, 232, 215, 0.35);
+  color: #38E8D7;
+}
+
+.btn-voltar:active,
+.btn-atalho-dados:active {
+  transform: scale(0.96);
+}
+
+.logo-info {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.intro-info {
+  margin-bottom: 28px;
+}
+
+.tag-secao {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #38E8D7;
+}
+
+.titulo-pagina {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.subtitulo-pagina {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #B8D4CE;
+}
+
+/* =========================================================
+   CARDS DE INFOGRÁFICO COM PÍLULA SUPERIOR
+   ========================================================= */
+.card-infografico {
+  position: relative;
+  padding: 26px 16px 18px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.badge-flutuante {
+  position: absolute;
+  top: -13px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(#123530, #123530) padding-box,
+    linear-gradient(90deg, #00F5D4, #D3EC73) border-box;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: #E6F4F1;
+}
+
+.badge-flutuante .destaque {
+  font-weight: 700;
+  color: #D3EC73;
+}
+
+.titulo-bloco {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.subtitulo-bloco {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #B8D4CE;
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   INFOGRÁFICO 1: SVG CICLO HIDROLÓGICO
+   ========================================================= */
+.palco-svg {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.svg-ciclo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.grupo-svg {
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.grupo-svg.ativo {
+  opacity: 1;
+}
+
+@keyframes moverTraco {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.grupo-svg.ativo .animar-fluxo {
+  animation: moverTraco 1.2s linear infinite;
+}
+
+.grupo-svg.ativo .animar-chuva {
+  animation: moverTraco 0.7s linear infinite;
+}
+
+.grade-etapas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.btn-etapa {
+  padding: 8px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background-color: #11342F;
+  color: #B8D4CE;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.64rem;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.btn-etapa.ativa {
+  background: linear-gradient(90deg, #00F5D4, #D3EC73);
+  border-color: transparent;
+  color: #051A16;
+  font-weight: 700;
+}
+
+.box-etapa-info {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background-color: #061815;
+  border: 1px solid rgba(56, 232, 215, 0.22);
+}
+
+.etapa-cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.etapa-cabecalho strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #FFFFFF;
+}
+
+.pill-etapa {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background-color: rgba(0, 245, 212, 0.14);
+  color: #00F5D4;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.6rem;
+}
+
+.box-etapa-info p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #CBE0DC;
+}
+
+/* =========================================================
+   INFOGRÁFICO 2: SIMULADOR DE USO DO SOLO
+   ========================================================= */
+.abas-solo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background-color: #143631;
+  margin-bottom: 16px;
+}
+
+.aba-solo {
+  padding: 8px 4px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #B8D4CE;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.66rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aba-solo.ativa {
+  background-color: #FFFFFF;
+  color: #071E1A;
+  font-weight: 700;
+}
+
+.barra-empilhada {
+  display: flex;
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: #061815;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 14px;
+}
+
+.fatia {
+  height: 100%;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fatia-infiltracao {
+  background-color: #24DF7B;
+}
+
+.fatia-evapo {
+  background-color: #00BBF9;
+}
+
+.fatia-escoamento {
+  background-color: #FB8500;
+}
+
+.legenda-solo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.item-legenda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: #0D2E29;
+}
+
+.bolinha-cor {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cor-infiltracao { background-color: #24DF7B; }
+.cor-evapo { background-color: #00BBF9; }
+.cor-escoamento { background-color: #FB8500; }
+
+.item-legenda > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.legenda-nome {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  color: #D9ECE8;
+}
+
+.legenda-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.76rem;
+  color: #FFFFFF;
+}
+
+.box-consequencia {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background-color: #061815;
+  border-left: 3.5px solid #24DF7B;
+}
+
+.box-consequencia.alerta {
+  border-left-color: #FFB703;
+}
+
+.box-consequencia.perigo {
+  border-left-color: #FB7185;
+}
+
+.box-consequencia strong {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.box-consequencia p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #CBE0DC;
+}
+
+/* =========================================================
+   INFOGRÁFICO 3: PERFIL LONGITUDINAL (TIMELINE VERTICAL)
+   ========================================================= */
+.card-perfil {
+  padding: 20px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background-color: #0B2622;
+  margin-bottom: 24px;
+}
+
+.perfil-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.badge-extensao {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background-color: rgba(211, 236, 115, 0.14);
+  border: 1px solid rgba(211, 236, 115, 0.4);
+  color: #D3EC73;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.timeline-rio {
+  display: flex;
+  flex-direction: column;
+}
+
+.marco-rio {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+}
+
+.marcador-coluna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ponto-altitude {
+  width: 46px;
+  padding: 4px 0;
+  border-radius: 999px;
+  background-color: #133B35;
+  border: 1.5px solid #38E8D7;
+  color: #38E8D7;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.ponto-altitude.mar {
+  background-color: #00F5D4;
+  color: #051A16;
+  border-color: #00F5D4;
+}
+
+.linha-vertical {
+  width: 2px;
+  flex: 1;
+  min-height: 28px;
+  background: linear-gradient(180deg, #38E8D7 0%, #24DF7B 100%);
+  margin: 4px 0;
+}
+
+.conteudo-marco {
+  padding-bottom: 18px;
+}
+
+.marco-rio.ultimo .conteudo-marco {
+  padding-bottom: 2px;
+}
+
+.marco-km {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #8FB3AC;
+  margin-bottom: 2px;
+}
+
+.conteudo-marco h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.conteudo-marco p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #CBE0DC;
+}
+
+/* =========================================================
+   ENCERRAMENTO DA JORNADA
+   ========================================================= */
+.card-encerramento {
+  padding: 22px 18px;
+  border: 1.5px solid #24D88A;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 0%, #11443B 0%, #09231F 80%);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.encerramento-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: rgba(36, 223, 123, 0.16);
+  color: #24DF7B;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.66rem;
+  margin-bottom: 10px;
+}
+
+.card-encerramento h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.card-encerramento p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #B8D4CE;
+  margin-bottom: 18px;
+}
+
+.botoes-finais {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-primario-final {
+  display: block;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 999px;
+  background-color: #24DF7B;
+  color: #051A16;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.86rem;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(36, 223, 123, 0.3);
+}
+
+.btn-secundario-final {
+  display: block;
+  width: 100%;
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background-color: transparent;
+  color: #E6F4F1;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-decoration: none;
+}

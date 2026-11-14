@@ -1,48 +1,195 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../imgs/favicon.png" type="image/png">
-    <title>Mapa Bacia Hidrográfica do Potengi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Interativo • Bacia do Rio Potengi</title>
+  <link rel="icon" type="image/png" href="../../assets/imgs/favicon.png">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/mapa.css">
 </head>
 <body>
 
-    <header class="header">
-        <img src="../imgs/logo_semente.webp" alt="Logo" class="logo">
-        <nav class="menu"> 
-            <a href="../index.html">Início</a>
-            <a href="mapa.html">Mapa</a>
-            <a href="audio.html">Áudio</a>
-        </nav>
-    </header>
-    <main>
-        <section class="texto container">
-            <h1>Mapa Bacia Hidrográfica do Rio Potengi</h1>
-            <p>Clique em uma das cidades que fazem parte da Bacia Hidrográfica do Potengi para ver os seus dados pluviométricos</p>
-        </section>
+  <!-- CABEÇALHO COM VOLTAR, LOGO E BARRA DE 100 XP -->
+  <header class="container cabecalho-mapa">
+    <a href="../../index.html" class="btn-voltar" aria-label="Voltar para a página inicial">
+      <span aria-hidden="true">←</span> Início
+    </a>
 
-        <button class="btn" id="saotome" onclick="window.location.href='saotome'"></button>
-        <button class="btn" id="tangara" onclick="window.location.href='tangara'"></button>
-        <button class="btn" id="ruybarbosa" onclick="window.location.href='ruybarbosa'"></button>
-        <button class="btn" id="sitionovo" onclick="window.location.href='sitionovo'"></button>
-        <button class="btn" id="sppotengi" onclick="window.location.href='sppotengi'"></button>
-        <button class="btn" id="lagoadevelhos" onclick="window.location.href='lagoadevelhos'"></button>
-        <button class="btn" id="barcelona" onclick="window.location.href='barcelona'"></button>
-        <button class="btn" id="saopedro" onclick="window.location.href='saopedro'"></button>
-        <button class="btn" id="santamaria" onclick="window.location.href='santamaria'"></button>
-        <button class="btn" id="senadoreloi" onclick="window.location.href='senadoreloi'"></button>
-        <button class="btn" id="cerrocora" onclick="window.location.href='cerrocora'"></button>
-        <button class="btn" id="riachuelo" onclick="window.location.href='riachuelo'"></button>
-        <button class="btn" id="bomjesus" onclick="window.location.href='bomjesus'"></button>
-        <button class="btn" id="ielmomarinho" onclick="window.location.href='ielmomarinho'"></button>
-        <button class="btn" id="macaiba" onclick="window.location.href='macaiba'"></button>
-        <button class="btn" id="saogoncalo" onclick="window.location.href='saogoncalo'"></button>
-        <button class="btn" id="natal" onclick="window.location.href='natal'"></button>
-        <div id="mapa">
-            <img src="../imgs/mapa.png" alt="">
+    <img 
+      src="../../assets/imgs/logo_semente.png" 
+      alt="Logo SEMENTE IFRN" 
+      class="logo-mapa"
+    >
+
+    <div class="xp-hud" id="xp-hud" aria-label="Barra de experiência até 100 XP">
+      <div class="xp-topo">
+        <span class="xp-icone" aria-hidden="true">⚡</span>
+        <span id="xp-texto" class="xp-texto">0 / 100 XP</span>
+      </div>
+      <div class="xp-trilha">
+        <div id="xp-barra" class="xp-preenchimento" style="width: 0%;"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro-mapa">
+      <div class="topo-intro">
+        <h1 class="titulo-pagina">Mapa Pluviométrico Interativo</h1>
+        <span id="contador-regioes" class="badge-exploradas">1/4 REGIÕES</span>
+      </div>
+      <p class="subtitulo-pagina">Toque nos pinos, compare os dados e responda aos desafios para alcançar 100 XP</p>
+    </section>
+
+    <!-- CARD 1: MAPA CENTRAL COM BORDA GIRATÓRIA 360° -->
+    <section class="card-mapa-interativo card-borda-giratoria" aria-label="Mapa clicável da Bacia do Rio Potengi">
+      <div class="mapa-palco">
+        <img 
+          src="../../assets/imgs/mapa.png" 
+          alt="Mapa cartográfico da Bacia Hidrográfica do Rio Potengi" 
+          class="img-mapa-central"
+        >
+
+        <!-- Pinos posicionados em % sobre o mapa (Oeste -> Leste) -->
+        <button 
+          type="button" 
+          class="pino-regiao" 
+          data-regiao="cerro-cora" 
+          style="top: 56%; left: 14%;"
+          aria-label="Selecionar Cerro Corá (Nascente)"
+        >
+          <span class="pino-pulso"></span>
+          <span class="pino-centro"></span>
+        </button>
+
+        <button 
+          type="button" 
+          class="pino-regiao" 
+          data-regiao="sp-potengi" 
+          style="top: 48%; left: 41%;"
+          aria-label="Selecionar São Paulo do Potengi (Médio Curso)"
+        >
+          <span class="pino-pulso"></span>
+          <span class="pino-centro"></span>
+        </button>
+
+        <button 
+          type="button" 
+          class="pino-regiao" 
+          data-regiao="macaiba" 
+          style="top: 47%; left: 66%;"
+          aria-label="Selecionar Macaíba (Transição Costeira)"
+        >
+          <span class="pino-pulso"></span>
+          <span class="pino-centro"></span>
+        </button>
+
+        <button 
+          type="button" 
+          class="pino-regiao ativo" 
+          data-regiao="natal" 
+          style="top: 37%; left: 86%;"
+          aria-label="Selecionar Natal (Foz e Estuário)"
+        >
+          <span class="pino-pulso"></span>
+          <span class="pino-centro"></span>
+        </button>
+      </div>
+
+      <!-- Atalhos por nome da cidade -->
+      <div class="seletor-cidades" role="tablist" aria-label="Atalhos das regiões">
+        <button type="button" class="pill-cidade" data-regiao="cerro-cora">Cerro Corá</button>
+        <button type="button" class="pill-cidade" data-regiao="sp-potengi">S. P. Potengi</button>
+        <button type="button" class="pill-cidade" data-regiao="macaiba">Macaíba</button>
+        <button type="button" class="pill-cidade ativa" data-regiao="natal">Natal</button>
+      </div>
+    </section>
+
+    <!-- CARD 2: DESAFIO INTERATIVO DA REGIÃO SELECIONADA (+25 XP) -->
+    <section class="card-quiz-regiao card-borda-giratoria" id="card-quiz" aria-live="polite">
+      <span id="quiz-badge" class="badge-quiz">
+        DESAFIO DE NATAL <span class="separador">•</span> <strong class="xp">+25 XP</strong>
+      </span>
+
+      <h2 id="quiz-pergunta" class="quiz-pergunta">
+        Por que chove 2,4x mais em Natal do que na nascente do rio?
+      </h2>
+
+      <div id="quiz-opcoes" class="quiz-opcoes">
+        <!-- Botões gerados dinamicamente pelo mapa.js -->
+      </div>
+
+      <p id="quiz-feedback" class="quiz-feedback" hidden></p>
+    </section>
+
+    <!-- CARD 3: PAINEL DE DADOS PLUVIOMÉTRICOS E CORRELACIONADOS -->
+    <section class="painel-regiao card-borda-giratoria" id="painel-regiao" aria-live="polite">
+      <div class="painel-topo">
+        <div>
+          <span id="regiao-trecho" class="tag-trecho">Baixo Curso • Foz e Estuário</span>
+          <h2 id="regiao-nome" class="nome-regiao">Natal</h2>
         </div>
-    </main>
+        <span id="regiao-regime" class="badge-regime">RIO PERENE</span>
+      </div>
+
+      <!-- Volume anual em destaque -->
+      <div class="bloco-pluviometria">
+        <div class="numero-principal">
+          <span id="regiao-mm">1.450</span>
+          <small>mm/ano</small>
+        </div>
+        <span id="regiao-comparativo" class="pill-comparativo">2,4x mais chuva que na nascente</span>
+      </div>
+
+      <!-- Gráfico de distribuição mensal (12 meses) -->
+      <div class="bloco-grafico">
+        <div class="grafico-cabecalho">
+          <span>Distribuição Mensal</span>
+          <strong id="regiao-pico">Pico: Mar–Jul</strong>
+        </div>
+        <div id="grafico-barras" class="grafico-barras">
+          <!-- Barras geradas pelo mapa.js -->
+        </div>
+        <div class="grafico-meses">
+          <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span>
+          <span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+        </div>
+      </div>
+
+      <!-- Dados correlacionados -->
+      <div class="grid-correlacionados">
+        <article class="mini-card-dado">
+          <span class="dado-label">Bioma Dominante</span>
+          <strong id="regiao-bioma" class="dado-valor">Manguezal e Mata Atlântica</strong>
+        </article>
+
+        <article class="mini-card-dado">
+          <span class="dado-label">Hidrologia / Reserva</span>
+          <strong id="regiao-hidrologia" class="dado-valor">Estuário e influência das marés</strong>
+        </article>
+
+        <article class="mini-card-dado">
+          <span class="dado-label">Uso do Solo & Impacto</span>
+          <strong id="regiao-impacto" class="dado-valor">Alta impermeabilização urbana</strong>
+        </article>
+
+        <article class="mini-card-dado">
+          <span class="dado-label">Quadra Chuvosa</span>
+          <strong id="regiao-estacao" class="dado-valor">Março a Julho (72% do total)</strong>
+        </article>
+      </div>
+
+      <p id="regiao-resumo" class="texto-sintese">
+        Na foz, a umidade vinda do Oceano Atlântico eleva o volume anual para 1.450 mm, mantendo o rio perene e alimentando o ecossistema de manguezal.
+      </p>
+
+      <footer class="fonte-dados">
+        Fontes: EMPARN • IGARN • ANA • Base Cartográfica UFRN
+      </footer>
+    </section>
+  </main>
+
+  <script src="../js/mapa.js"></script>
 </body>
 </html>

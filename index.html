@@ -3,42 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/home.css">
     <link rel="shortcut icon" href="assets/imgs/favicon.png" type="image/png">
     <title>Início</title>
 </head>
 <body>
 
-    <header class="header">
-        <img src="assets/imgs/logo.webp" alt="Logo" class="logo">
-        <nav class="menu"> 
-            <a href="index.html">Início</a>
-            <a href="src/pages/mapa.html">Mapa</a>
-            <a href="src/pages/audio.html">Áudio</a>
-        </nav>
-    </header>
+  <header class="container cabecalho">
+    <img 
+      src="./assets/imgs/logo_semente.png" 
+      alt="Logo SEMENTE IFRN" 
+      class="logo-semente"
+    >
+    <!-- Barra de XP no canto superior direito -->
+    <div class="xp-hud" id="xp-hud" aria-label="Pontuação de experiência">
+      <div class="xp-topo">
+        <span class="xp-icone" aria-hidden="true">⚡</span>
+        <span id="xp-texto" class="xp-texto">0 / 10 XP</span>
+      </div>
+      <div class="xp-trilha">
+        <div id="xp-barra" class="xp-preenchimento" style="width: 0%;"></div>
+      </div>
+    </div>
+  </header>
 
-    <main class="container">
-        <section class="texto" id="inicio">
-            <h3>Seja muito bem-vindo!</h3>
-            <p>O Primeiro ano de Informática para Internet do Campus Natal Zona Norte traz para o Projeto Semente uma iniciativa que visa promover a conscientização ambiental e a preservação bacia hidrográfica do Potengi. Através de recursos interativos, como mapas e áudios educativos, buscamos engajar a comunidade local e visitantes na importância da conservação dos recursos hídricos.</p>
-        </section>
+  <main class="container">
+    <section class="hero">
+      <h1 class="titulo-principal">Uma Viagem pela Bacia do Rio Potengi</h1>
+      <p class="subtitulo">Descubra como as chuvas transformam o rio da nascente até o mar</p>
+    </section>
+    <section class="card-desafio">
+    <span class="badge-desafio">
+        DESAFIO RÁPIDO <span class="separador">•</span> <strong class="xp">+10 XP</strong>
+    </span>
 
-        <section class="texto" id="escolha">
-            <h4>Explore os recursos do Projeto Semente:</h4>
-        </section>
+    <h2 class="pergunta-desafio">Onde chove 2,4x mais ao longo do rio?</h2>
 
+    <div class="opcoes-desafio">
+        <button type="button" class="btn-opcao">Cerro Corá</button>
+        <button type="button" class="btn-opcao">Natal (Foz)</button>
+    </div>
+    </section>
+    <!-- SEÇÃO 2: CARD DO MAPA INTERATIVO -->
+    <section class="card-mapa">
+      <div class="mapa-preview">
+        <img 
+          src="./assets/imgs/mapa.png" 
+          alt="Ilustração do curso do Rio Potengi com pontos de chuva" 
+          class="img-mapa-preview"
+        >
+      </div>
 
-        <div class="cards-container">
-            <section class="card-clicavel" id="card-mapa">
-                <p>Mapa</p>
-            </section>
-            
-            <section class="card-clicavel" id="card-audio">
-                <p>Áudio</p>
-            </section>
+      <h2 class="titulo-card">Mapa Pluviométrico Interativo</h2>
+      <p class="descricao-card">Toque nas regiões e compare o volume de chuvas</p>
+
+      <a href="./src/pages/mapa.html" class="btn-explorar">
+        Explorar Mapa <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- SEÇÃO 3: SIMULADOR DE CHUVAS -->
+    <section class="card-simulador">
+      <h2 class="titulo-card">Simulador de Chuvas</h2>
+
+      <div class="abas-simulador" role="tablist" aria-label="Escolha uma região da bacia">
+        <button type="button" class="aba-regiao" data-regiao="nascente">Cerro Corá</button>
+        <button type="button" class="aba-regiao" data-regiao="medio">S. P. Potengi</button>
+        <button type="button" class="aba-regiao ativa" data-regiao="foz">Natal (Foz)</button>
+      </div>
+
+      <div class="leitura-chuva">
+        <span id="valor-chuva" class="numero-chuva">1.450</span>
+        <span class="unidade-chuva">mm/ano</span>
+      </div>
+
+      <div class="barra-progresso-fundo">
+        <div id="barra-chuva" class="barra-progresso-preenchimento" style="width: 100%;"></div>
+      </div>
+
+      <p id="status-bioma" class="badge-bioma">Manguezal cheio • 2,4x mais chuva</p>
+    </section>
+
+    <!-- SEÇÃO 4: EXPLORE A BACIA (LINKS SUCINTOS) -->
+    <section class="secao-explore">
+      <h2 class="titulo-secao">Explore a Bacia</h2>
+
+      <div class="lista-links">
+        <a href="./src/pages/dados.html" class="card-link">
+          <div class="info-link">
+            <h3>Dados Pluviométricos</h3>
+            <p>Consulte volumes, médias e comparações →</p>
+          </div>
+          <span class="seta-link" aria-hidden="true">→</span>
+        </a>
+
+        <a href="./src/pages/infograficos.html" class="card-link">
+          <div class="info-link">
+            <h3>Infográficos</h3>
+            <p>Visualize o ciclo e os impactos da chuva →</p>
+          </div>
+          <span class="seta-link" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ DE AUTORIA -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape-label">Desenvolvido por</p>
+
+      <div class="autores-grid">
+        <!-- Integrante 1 -->
+        <div class="autor-item">
+          <span class="autor-nome">Arthur Kauã</span>
+          <div class="autor-redes">
+            <a href="https://github.com/ArthurdevjuniorIA" target="_blank" rel="noopener noreferrer" class="link-rede" aria-label="GitHub de Arthur Kauã">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://instagram.com/tutudev.js" target="_blank" rel="noopener noreferrer" class="link-rede" aria-label="Instagram de Arthur Kauã">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+              <span>Instagram</span>
+            </a>
+          </div>
         </div>
-    </main>
+
+        <!-- Integrante 2 -->
+        <div class="autor-item">
+          <span class="autor-nome">Andrew Rafael</span>
+          <div class="autor-redes">
+            <a href="https://github.com/andrewqdev" target="_blank" rel="noopener noreferrer" class="link-rede" aria-label="GitHub de Andrew Rafael">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Integrante 3 -->
+        <div class="autor-item">
+          <span class="autor-nome">Marcus Paulo</span>
+          <div class="autor-redes">
+            <a href="https://github.com/Marcuspdev" target="_blank" rel="noopener noreferrer" class="link-rede" aria-label="GitHub de Marcus Paulo">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rodape-institucional">
+        <p>1º Ano • Informática para Internet</p>
+        <p>IFRN Natal-Zona Norte • 2026</p>
+      </div>
+    </div>
+  </footer>
+
 
     <script src="src/js/script.js"></script>
 </body>
