@@ -121,6 +121,28 @@ body {
     color: #000;
 }
 
+#recomendacao {
+    background-color: #FFE4B5;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: none; /* Inicialmente escondido */
+}
+
+.dado {
+    background-color: #BAF7E7;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    display: none; /* Inicialmente escondido */
+}
+
 #mapa {
     position: relative;
     width: 1700px;
@@ -187,4 +209,12 @@ body {
 
 @media (max-width: 500px) {
     #mapa { width: 400px; }
+}
+
+@media (max-width: 500px) {
+    #mapa { width: 400px; }
+
+    #recomendacao {
+        display: block;
+    }
 }
