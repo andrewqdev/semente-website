@@ -139,19 +139,18 @@ body {
     #sitionovo { left: 40.99%; top: 72.1%; }
     #sppotengi { left: 51.15%; top: 44.8%; }
     #lagoadevelhos { left: 43.7%; top: 58.2%; }
-    /* A seguir estão desalinhados */
-    #barcelona { left: 42.3%;  top: 39.3%; }
-    #serracaida { left: 0%;  top: 0%; }
-    #saopedro { left: 57.3%;  top: 44%; }
-    #santamaria { left: 54.68%;  top: 49.58%; }
-    #senadoreloi{ left: 54.4%;  top: 31.1%; }
-    #cerrocora { left: 20.39%;  top: 31.2%; }
-    #riachuelo { left: 47.6%;  top: 51.8%; }
-    #bomjesus { left: 60%;  top: 35.8%; }
-    #ielmomarinho { left: 61.9%;  top: 51.7%; }
-    #macaiba { left: 72.2%;  top: 47.8%; }
-    #saogoncalo { left: 73.5%;  top: 54%; }
-    #natal { left: 77.6%;  top: 57.6%; }
+    #barcelona { left: 39.8%; top: 51.3%; }
+    #serracaiada { left: 55.27%; top: 72.3%; }
+    #saopedro { left: 59.78%; top: 44.6%; }
+    #santamaria { left: 56.28%; top: 36.58%; }
+    #senadoreloi{ left: 55.9%; top: 62.99%; }
+    #cerrocora { left: 10.6%; top: 62.8%; }
+    #riachuelo { left: 46.8%; top: 33.3%; }
+    #bomjesus { left: 63.4%; top: 56.3%; }
+    #ielmomarinho { left: 65.9%; top: 33.4%; }
+    #macaiba { left: 79.7%; top: 39.05%; }
+    #saogoncalo { left: 81.31%; top: 30%; }
+    #natal { left: 86.8%; top: 24.9%; }
 }
 
 @media (max-width: 1440px) {
