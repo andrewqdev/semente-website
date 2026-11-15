@@ -123,15 +123,16 @@ body {
 
 #mapa {
     position: relative;
-}
-
-#mapa img {
     width: 1700px;
     margin: auto;
 }
 
+#mapa img {
+    width: 100%;
+}
+
 @media (max-width: 1920px) {
-    #mapa img { width: 1440px; }
+    #mapa { width: 1440px; }
 
     #saotome { left: 29.6%; top: 54.6%; }
     #tangara { left: 48.63%; top: 84.5%; }
@@ -154,17 +155,17 @@ body {
 }
 
 @media (max-width: 1440px) {
-    #mapa img { width: 1000px; }
+    #mapa { width: 1000px; }
 }
 
 @media (max-width: 1000px) {
-    #mapa img { width: 700px; }
+    #mapa { width: 700px; }
 }
 
 @media (max-width: 700px) {
-    #mapa img { width: 500px; }
+    #mapa { width: 500px; }
 }
 
 @media (max-width: 500px) {
-    #mapa img { width: 480px; }
+    #mapa { width: 400px; }
 }
