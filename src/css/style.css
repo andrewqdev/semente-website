@@ -55,9 +55,9 @@ body {
 }
 
 .btn {
-    border: 2px solid rgb(236, 5, 5);
-    color: rgb(236, 5, 5);
-    background: transparent;
+    border: 2px solid rgb(88, 219, 175);
+    color: rgb(88, 219, 175);
+    background: rgb(88, 219, 175);
     cursor: pointer;
     outline: none;
     width: 12px;
@@ -131,9 +131,6 @@ body {
     width: 100%;
 }
 
-@media (max-width: 1920px) {
-    #mapa { width: 1440px; }
-
     #saotome { left: 29.6%; top: 54.6%; }
     #tangara { left: 48.63%; top: 84.5%; }
     #ruybarbosa { left: 39.2%; top: 42.05%; }
@@ -152,6 +149,9 @@ body {
     #macaiba { left: 79.7%; top: 39.05%; }
     #saogoncalo { left: 81.31%; top: 30%; }
     #natal { left: 86.8%; top: 24.9%; }
+
+@media (max-width: 1920px) {
+    #mapa { width: 1440px; }
 }
 
 @media (max-width: 1440px) {
@@ -160,6 +160,25 @@ body {
 
 @media (max-width: 1000px) {
     #mapa { width: 700px; }
+
+    #saotome { left: 29.0%; top: 54.1%; }
+    #tangara { left: 48%; top: 84.5%; }
+    #ruybarbosa { left: 39%; top: 41.5%; }
+    #sitionovo { left: 40.79%; top: 71.4%; }
+    #sppotengi { left: 50.8%; top: 44.2%; }
+    #lagoadevelhos { left: 43.5%; top: 57.6%; }
+    #barcelona { left: 39.6%; top: 50.7%; }
+    #serracaiada { left: 55.07%; top: 71.5%; }
+    #saopedro { left: 59.5%; top: 43.9%; }
+    #santamaria { left: 56.08%; top: 35.88%; }
+    #senadoreloi{ left: 55.7%; top: 62.39%; }
+    #cerrocora { left: 10.4%; top: 62.1%; }
+    #riachuelo { left: 46.5%; top: 33%; }
+    #bomjesus { left: 63%; top: 55.4%; }
+    #ielmomarinho { left: 65.5%; top: 32.7%; }
+    #macaiba { left: 79.4%; top: 38.8%; }
+    #saogoncalo { left: 81.1%; top: 29.8%; }
+    #natal { left: 86.5%; top: 24.4%; }
 }
 
 @media (max-width: 700px) {
